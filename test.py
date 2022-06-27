@@ -33,7 +33,7 @@ def predict():
     Seller_Type=int(request.form.get('Seller_Type'))
     Transmission=int(request.form.get('Transmission'))
     Owner=int(request.form.get('Owner'))
-    print(Year,	Present_Price,	Kms_Driven,	Fuel_Type,	Seller_Type,	Transmission,	Owner )
+    # print(Year,	Present_Price,	Kms_Driven,	Fuel_Type,	Seller_Type,	Transmission,	Owner )
     prediction=saved_model.predict(pd.DataFrame([[Year,Present_Price,Kms_Driven,Fuel_Type,	Seller_Type,Transmission,Owner]], columns=['Year',	'Present_Price',	'Kms_Driven',	'Fuel_Type',	'Seller_Type',	'Transmission',	'Owner']))
     # print(prediction)
     return f"{str(np.round(prediction[0],2))} Lakh"

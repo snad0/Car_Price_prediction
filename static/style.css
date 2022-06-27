@@ -24,3 +24,6 @@ body{
     align-items: center;
     justify-content: center;
 }
+#prediction{
+    padding-bottom: 100px;
+}
