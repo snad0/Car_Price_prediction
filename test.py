@@ -19,11 +19,7 @@ car=car.dropna()
 # ‘/’ URL is bound with hello_world() function.
 
 def hello_world():
-    # company=car["Car_Name"].unique()
-    # fuel_type=car["Fuel_Type"].unique()
-    # Seller_Type=car["Seller_Type"].unique()
-    # Transmission=car["Transmission"].unique()
-    # Owner=car["Owner"].unique()
+
     return render_template('index.html',)
 
 # companies=company,fuel_type=fuel_type,Seller_Type=Seller_Type, Transmission= Transmission,Owner=Owner

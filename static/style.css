@@ -1,4 +1,26 @@
-h1{
-    font-size: 15px;
+body{
+    background-image: url("car3.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+.row{
+
+    justify-content: center;
+    
+}
+.card{
+    justify-content: center;
+}
+.col-md-10 {
+    margin: 0;
     text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+.form-group{
+    margin: 0;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
 }
