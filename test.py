@@ -1,6 +1,6 @@
 import pandas as pd
-import pandasql as ps
 import inquirer
+import numpy as np
 from flask import Flask, render_template, request
 import pickle
 import jinja2
@@ -19,14 +19,14 @@ car=car.dropna()
 # ‘/’ URL is bound with hello_world() function.
 
 def hello_world():
-    company=car["Car_Name"].unique()
-    fuel_type=car["Fuel_Type"].unique()
-    Seller_Type=car["Seller_Type"].unique()
-    Transmission=car["Transmission"].unique()
-    Owner=car["Owner"].unique()
-    return render_template('index.html',companies=company,fuel_type=fuel_type,Seller_Type=Seller_Type, Transmission= Transmission,Owner=Owner)
+    # company=car["Car_Name"].unique()
+    # fuel_type=car["Fuel_Type"].unique()
+    # Seller_Type=car["Seller_Type"].unique()
+    # Transmission=car["Transmission"].unique()
+    # Owner=car["Owner"].unique()
+    return render_template('index.html',)
 
-
+# companies=company,fuel_type=fuel_type,Seller_Type=Seller_Type, Transmission= Transmission,Owner=Owner
 
 @app.route('/predict', methods=['POST'])
 def predict():
@@ -39,8 +39,8 @@ def predict():
     Owner=int(request.form.get('Owner'))
     print(Year,	Present_Price,	Kms_Driven,	Fuel_Type,	Seller_Type,	Transmission,	Owner )
     prediction=saved_model.predict(pd.DataFrame([[Year,Present_Price,Kms_Driven,Fuel_Type,	Seller_Type,Transmission,Owner]], columns=['Year',	'Present_Price',	'Kms_Driven',	'Fuel_Type',	'Seller_Type',	'Transmission',	'Owner']))
-    print(prediction)
-    return str(prediction[0])
+    # print(prediction)
+    return f"{str(np.round(prediction[0],2))} Lakh"
 
 
 if __name__ == '__main__':
