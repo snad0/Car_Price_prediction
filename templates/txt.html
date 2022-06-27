@@ -1,0 +1,751 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Login or Sinup</title>
+ 
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script>            
+            
+<style>
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+body{background-color:#EAEAFB;background-image: url("https://images.pexels.com/photos/136872/pexels-photo-136872.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+    background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+#header_wrap{width:100%;height:80px;background-color:#006bb3;box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;}
+#header{width:1200px;margin:0 auto;height:80px;}
+.main{width:1050px;display:table;padding-bottom:30px;margin:0 auto;margin-top:45px;background-color:#f2f2f2;box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;}
+#form1{margin:100px auto;width:80%;height:auto;padding-bottom:10px;}
+#form{width:100%;margin-left:80px;}
+#footer{width:100%;height:100px;margin:20 auto;background-color:pink;}
+
+</style>
+</head>
+
+<body>
+<div id="header_wrap">
+<div id="header">
+			<img src="https://northernsupercarhire.com/wp-content/themes/nfh-theme/dist/images/car-lambo.png" style="width:140px;float:left;">
+			    <a style="color:white;font-weight:bold;font-size:35px;line-height:80px;float:left;margin-left:30px;">Car Price Prediction</a>
+		     
+             </div>
+</div>
+
+<div class="main">
+    <div>Select</div>
+    <div>
+        <?php
+        ?>
+        
+
+    </div>
+</div>
+<div id="form1"> 
+
+    <!-- Year	Present_Price	Kms_Driven	Fuel_Type	Seller_Type	Transmission	Owner    -->
+
+
+   <form id="form" method="post" accept-charset="utf-8" name="Modelform">
+                    <div class="col-md-10 form-group" style="text-align: center">
+                        <label><b>Select Year:</b> </label><br>
+                        <select class="selectpicker form-control" id="company" name="company" required="1"
+                                onchange="load_car_models(this.id,'car_models')">
+                            
+                            <!-- <option value="Ford">Ford</option>
+                            
+                            <option value="Maruti">Maruti</option>
+                            
+                            <option value="Hyundai">Hyundai</option>
+                            
+                            <option value="Honda">Honda</option>
+                            
+                            <option value="Toyota">Toyota</option>
+                            
+                            <option value="Jeep">Jeep</option>
+                            
+                            <option value="Kia">Kia</option>
+                            
+                            <option value="Tata">Tata</option>
+                            
+                            <option value="Audi">Audi</option>
+                            
+                            <option value="Renault">Renault</option>
+                            
+                            <option value="BMW">BMW</option>
+                            
+                            <option value="Nissan">Nissan</option>
+                            
+                            <option value="MG">MG</option>
+                            
+                            <option value="Mahindra">Mahindra</option>
+                            
+                            <option value="Volkswagen">Volkswagen</option>
+                            
+                            <option value="Volvo">Volvo</option>
+                            
+                            <option value="Skoda">Skoda</option>
+                            
+                            <option value="Jaguar">Jaguar</option>
+                            
+                            <option value="Mercedes">Mercedes</option>
+                            
+                            <option value="Ssangyong">Ssangyong</option>
+                            
+                            <option value="Fiat">Fiat</option>
+                            
+                            <option value="Chevrolet">Chevrolet</option>
+                            
+                            <option value="Datsun">Datsun</option>
+                            
+                            <option value="Land">Land</option>
+                            
+                            <option value="Porsche">Porsche</option> -->
+                            
+                        </select>
+                    </div>
+                    <div class="col-md-10 form-group" style="text-align: center">
+                        <label><b>Select the model:</b> </label><br>
+                        <select class="selectpicker form-control" id="car_models" name="car_models" required="1">
+                             
+                             <option value="Ford Figo Duratec">Ford Figo Duratec</option>
+                             
+                             <option value="Maruti Suzuki Wagon">Maruti Suzuki Wagon</option>
+                             
+                             <option value="Hyundai Creta 1.6">Hyundai Creta 1.6</option>
+                             
+                             <option value="Hyundai Venue -">Hyundai Venue -</option>
+                             
+                             <option value="Honda Jazz -">Honda Jazz -</option>
+                             
+                             <option value="Hyundai i20 -">Hyundai i20 -</option>
+                             
+                             <option value="Maruti Suzuki Swift">Maruti Suzuki Swift</option>
+                             
+                             <option value="Toyota Corolla Altis">Toyota Corolla Altis</option>
+                             
+                             <option value="Honda Amaze -">Honda Amaze -</option>
+                             
+                             <option value="Hyundai Elite i20">Hyundai Elite i20</option>
+                             
+                             <option value="Maruti Suzuki Alto">Maruti Suzuki Alto</option>
+                             
+                             <option value="Maruti Suzuki Baleno">Maruti Suzuki Baleno</option>
+                             
+                             <option value="Jeep Compass -">Jeep Compass -</option>
+                             
+                             <option value="Kia Seltos -">Kia Seltos -</option>
+                             
+                             <option value="Toyota Innova 2.5">Toyota Innova 2.5</option>
+                             
+                             <option value="Maruti Suzuki Ciaz">Maruti Suzuki Ciaz</option>
+                             
+                             <option value="Ford EcoSport Titanium">Ford EcoSport Titanium</option>
+                             
+                             <option value="Tata Nano Twist">Tata Nano Twist</option>
+                             
+                             <option value="Audi Q7 3.0">Audi Q7 3.0</option>
+                             
+                             <option value="Ford Ecosport -">Ford Ecosport -</option>
+                             
+                             <option value="Hyundai Grand i10">Hyundai Grand i10</option>
+                             
+                             <option value="Toyota Yaris -">Toyota Yaris -</option>
+                             
+                             <option value="Tata Nexon -">Tata Nexon -</option>
+                             
+                             <option value="Ford Ecosport 1.0">Ford Ecosport 1.0</option>
+                             
+                             <option value="Renault Triber -">Renault Triber -</option>
+                             
+                             <option value="Hyundai EON Magna">Hyundai EON Magna</option>
+                             
+                             <option value="Hyundai Creta S">Hyundai Creta S</option>
+                             
+                             <option value="Hyundai i20 Asta">Hyundai i20 Asta</option>
+                             
+                             <option value="BMW 3 Series">BMW 3 Series</option>
+                             
+                             <option value="Nissan Micra XV">Nissan Micra XV</option>
+                             
+                             <option value="Toyota Glanza V">Toyota Glanza V</option>
+                             
+                             <option value="Honda Brio S">Honda Brio S</option>
+                             
+                             <option value="MG Motors Hector">MG Motors Hector</option>
+                             
+                             <option value="Maruti Suzuki Vitara">Maruti Suzuki Vitara</option>
+                             
+                             <option value="Honda City -">Honda City -</option>
+                             
+                             <option value="Mahindra XUV 500">Mahindra XUV 500</option>
+                             
+                             <option value="Volkswagen Polo -">Volkswagen Polo -</option>
+                             
+                             <option value="Volvo XC90 D5">Volvo XC90 D5</option>
+                             
+                             <option value="Toyota Fortuner 3.0">Toyota Fortuner 3.0</option>
+                             
+                             <option value="Honda Jazz VX">Honda Jazz VX</option>
+                             
+                             <option value="Hyundai i10 Asta">Hyundai i10 Asta</option>
+                             
+                             <option value="Tata Nexon XM">Tata Nexon XM</option>
+                             
+                             <option value="Hyundai Verna 1.6">Hyundai Verna 1.6</option>
+                             
+                             <option value="Hyundai Santro Sportz">Hyundai Santro Sportz</option>
+                             
+                             <option value="Maruti Suzuki S">Maruti Suzuki S</option>
+                             
+                             <option value="Honda City VX">Honda City VX</option>
+                             
+                             <option value="Renault Kwid -">Renault Kwid -</option>
+                             
+                             <option value="Toyota Innova Crysta">Toyota Innova Crysta</option>
+                             
+                             <option value="Tata Zest XMS">Tata Zest XMS</option>
+                             
+                             <option value="Ford Freestyle TITANIUM">Ford Freestyle TITANIUM</option>
+                             
+                             <option value="Mahindra Xylo -">Mahindra Xylo -</option>
+                             
+                             <option value="BMW 5 Series">BMW 5 Series</option>
+                             
+                             <option value="Hyundai i20 Magna">Hyundai i20 Magna</option>
+                             
+                             <option value="Jeep Compass Limited">Jeep Compass Limited</option>
+                             
+                             <option value="Volkswagen Vento -">Volkswagen Vento -</option>
+                             
+                             <option value="Maruti Suzuki Ignis">Maruti Suzuki Ignis</option>
+                             
+                             <option value="Toyota Etios -">Toyota Etios -</option>
+                             
+                             <option value="Maruti Suzuki Celerio">Maruti Suzuki Celerio</option>
+                             
+                             <option value="Volkswagen Polo HIGHLINE1.2L">Volkswagen Polo HIGHLINE1.2L</option>
+                             
+                             <option value="Mahindra Thar DI">Mahindra Thar DI</option>
+                             
+                             <option value="Ford EcoSport Trend">Ford EcoSport Trend</option>
+                             
+                             <option value="Honda City 1.5">Honda City 1.5</option>
+                             
+                             <option value="Mahindra e2o T2">Mahindra e2o T2</option>
+                             
+                             <option value="Toyota Fortuner 4x4">Toyota Fortuner 4x4</option>
+                             
+                             <option value="Hyundai Xcent -">Hyundai Xcent -</option>
+                             
+                             <option value="Hyundai i20 Active">Hyundai i20 Active</option>
+                             
+                             <option value="Hyundai Creta -">Hyundai Creta -</option>
+                             
+                             <option value="Honda WR V">Honda WR V</option>
+                             
+                             <option value="Skoda Rapid -">Skoda Rapid -</option>
+                             
+                             <option value="Maruti Suzuki 800">Maruti Suzuki 800</option>
+                             
+                             <option value="Tata Nano -">Tata Nano -</option>
+                             
+                             <option value="Tata Indica -">Tata Indica -</option>
+                             
+                             <option value="Jaguar XJ L">Jaguar XJ L</option>
+                             
+                             <option value="Mercedes Benz GL">Mercedes Benz GL</option>
+                             
+                             <option value="Maruti Suzuki Dzire">Maruti Suzuki Dzire</option>
+                             
+                             <option value="Hyundai Verna -">Hyundai Verna -</option>
+                             
+                             <option value="Mercedes Benz C">Mercedes Benz C</option>
+                             
+                             <option value="Skoda Rapid Style">Skoda Rapid Style</option>
+                             
+                             <option value="Maruti Suzuki Ertiga">Maruti Suzuki Ertiga</option>
+                             
+                             <option value="Tata Indigo eCS">Tata Indigo eCS</option>
+                             
+                             <option value="Mahindra TUV300 -">Mahindra TUV300 -</option>
+                             
+                             <option value="Toyota Fortuner -">Toyota Fortuner -</option>
+                             
+                             <option value="Ssangyong Rexton RX7">Ssangyong Rexton RX7</option>
+                             
+                             <option value="Mahindra TUV300 T8">Mahindra TUV300 T8</option>
+                             
+                             <option value="Mahindra Bolero -">Mahindra Bolero -</option>
+                             
+                             <option value="Hyundai i10 Magna">Hyundai i10 Magna</option>
+                             
+                             <option value="Mahindra Scorpio -">Mahindra Scorpio -</option>
+                             
+                             <option value="Ford Ikon -">Ford Ikon -</option>
+                             
+                             <option value="Renault Kwid RXT">Renault Kwid RXT</option>
+                             
+                             <option value="Tata Hexa -">Tata Hexa -</option>
+                             
+                             <option value="Hyundai Santro -">Hyundai Santro -</option>
+                             
+                             <option value="Hyundai Getz -">Hyundai Getz -</option>
+                             
+                             <option value="Hyundai Santro Xing">Hyundai Santro Xing</option>
+                             
+                             <option value="Ford Figo -">Ford Figo -</option>
+                             
+                             <option value="Toyota Fortuner 2.8">Toyota Fortuner 2.8</option>
+                             
+                             <option value="Mahindra Bolero ZLX">Mahindra Bolero ZLX</option>
+                             
+                             <option value="Fiat Linea Emotion">Fiat Linea Emotion</option>
+                             
+                             <option value="Tata Tiago -">Tata Tiago -</option>
+                             
+                             <option value="Toyota Glanza -">Toyota Glanza -</option>
+                             
+                             <option value="Honda City V">Honda City V</option>
+                             
+                             <option value="Nissan Micra XE">Nissan Micra XE</option>
+                             
+                             <option value="Jaguar XF 2.2">Jaguar XF 2.2</option>
+                             
+                             <option value="Hyundai Verna Fluidic">Hyundai Verna Fluidic</option>
+                             
+                             <option value="Renault Duster -">Renault Duster -</option>
+                             
+                             <option value="Tata Tigor -">Tata Tigor -</option>
+                             
+                             <option value="Volkswagen Ameo -">Volkswagen Ameo -</option>
+                             
+                             <option value="Chevrolet Beat LT">Chevrolet Beat LT</option>
+                             
+                             <option value="Tata Hexa XM">Tata Hexa XM</option>
+                             
+                             <option value="Toyota Corolla H5">Toyota Corolla H5</option>
+                             
+                             <option value="Maruti Suzuki Maruti">Maruti Suzuki Maruti</option>
+                             
+                             <option value="Hyundai Xcent 1.2">Hyundai Xcent 1.2</option>
+                             
+                             <option value="Ford Figo 1.5">Ford Figo 1.5</option>
+                             
+                             <option value="Toyota Innova 2.0">Toyota Innova 2.0</option>
+                             
+                             <option value="Renault Kwid CLIMBER">Renault Kwid CLIMBER</option>
+                             
+                             <option value="Ford EcoSport Ambiente">Ford EcoSport Ambiente</option>
+                             
+                             <option value="Kia Seltos GTX">Kia Seltos GTX</option>
+                             
+                             <option value="Chevrolet Beat LS">Chevrolet Beat LS</option>
+                             
+                             <option value="Volkswagen Vento Highline">Volkswagen Vento Highline</option>
+                             
+                             <option value="Audi Q7 35">Audi Q7 35</option>
+                             
+                             <option value="Toyota Innova -">Toyota Innova -</option>
+                             
+                             <option value="Hyundai i20 Sportz">Hyundai i20 Sportz</option>
+                             
+                             <option value="Maruti Suzuki Eeco">Maruti Suzuki Eeco</option>
+                             
+                             <option value="Hyundai Eon Era">Hyundai Eon Era</option>
+                             
+                             <option value="Hyundai Venue S">Hyundai Venue S</option>
+                             
+                             <option value="Hyundai Santro 1.1">Hyundai Santro 1.1</option>
+                             
+                             <option value="Renault Triber 1.0">Renault Triber 1.0</option>
+                             
+                             <option value="Hyundai Verna SX">Hyundai Verna SX</option>
+                             
+                             <option value="Volkswagen Polo Comfortline">Volkswagen Polo Comfortline</option>
+                             
+                             <option value="Renault Triber RXT">Renault Triber RXT</option>
+                             
+                             <option value="Fiat Linea Dynamic">Fiat Linea Dynamic</option>
+                             
+                             <option value="Honda City ZX">Honda City ZX</option>
+                             
+                             <option value="Volkswagen Polo GT">Volkswagen Polo GT</option>
+                             
+                             <option value="Maruti Suzuki XL6">Maruti Suzuki XL6</option>
+                             
+                             <option value="Hyundai i10 Sportz">Hyundai i10 Sportz</option>
+                             
+                             <option value="Mahindra Scorpio LX">Mahindra Scorpio LX</option>
+                             
+                             <option value="Toyota Etios Liva">Toyota Etios Liva</option>
+                             
+                             <option value="Tata Aria Prestige">Tata Aria Prestige</option>
+                             
+                             <option value="Renault Kwid RxL">Renault Kwid RxL</option>
+                             
+                             <option value="Maruti Suzuki Ritz">Maruti Suzuki Ritz</option>
+                             
+                             <option value="Hyundai Getz GLS">Hyundai Getz GLS</option>
+                             
+                             <option value="Honda Amaze 1.5">Honda Amaze 1.5</option>
+                             
+                             <option value="Maruti Suzuki Zen">Maruti Suzuki Zen</option>
+                             
+                             <option value="Renault Captur -">Renault Captur -</option>
+                             
+                             <option value="Honda Brio -">Honda Brio -</option>
+                             
+                             <option value="Hyundai EON D">Hyundai EON D</option>
+                             
+                             <option value="Skoda Rapid 1.5">Skoda Rapid 1.5</option>
+                             
+                             <option value="Renault Duster 110PS">Renault Duster 110PS</option>
+                             
+                             <option value="Chevrolet Aveo -">Chevrolet Aveo -</option>
+                             
+                             <option value="Mahindra Scorpio S5">Mahindra Scorpio S5</option>
+                             
+                             <option value="Ford Freestyle -">Ford Freestyle -</option>
+                             
+                             <option value="Datsun Redi GO">Datsun Redi GO</option>
+                             
+                             <option value="Maruti Suzuki Omni">Maruti Suzuki Omni</option>
+                             
+                             <option value="Datsun GO T">Datsun GO T</option>
+                             
+                             <option value="Mahindra Bolero B6">Mahindra Bolero B6</option>
+                             
+                             <option value="Honda Civic 1.8V">Honda Civic 1.8V</option>
+                             
+                             <option value="Ford Figo Diesel">Ford Figo Diesel</option>
+                             
+                             <option value="Honda City SV">Honda City SV</option>
+                             
+                             <option value="Honda CRV -">Honda CRV -</option>
+                             
+                             <option value="Honda Amaze 1.2">Honda Amaze 1.2</option>
+                             
+                             <option value="Nissan Micra Active">Nissan Micra Active</option>
+                             
+                             <option value="Hyundai EON Era">Hyundai EON Era</option>
+                             
+                             <option value="Chevrolet Cruze LTZ">Chevrolet Cruze LTZ</option>
+                             
+                             <option value="Renault Scala RxZ">Renault Scala RxZ</option>
+                             
+                             <option value="Honda WRV VX">Honda WRV VX</option>
+                             
+                             <option value="Tata Tiago Revotorq">Tata Tiago Revotorq</option>
+                             
+                             <option value="Renault Duster 110">Renault Duster 110</option>
+                             
+                             <option value="Mahindra Logan -">Mahindra Logan -</option>
+                             
+                             <option value="Tata Indigo CS">Tata Indigo CS</option>
+                             
+                             <option value="Audi Q3 -">Audi Q3 -</option>
+                             
+                             <option value="Hyundai Verna FLUIDIC">Hyundai Verna FLUIDIC</option>
+                             
+                             <option value="Renault Kwid RXL">Renault Kwid RXL</option>
+                             
+                             <option value="Maruti Suzuki SX4">Maruti Suzuki SX4</option>
+                             
+                             <option value="Tata Tiago XZA">Tata Tiago XZA</option>
+                             
+                             <option value="Tata Indica Vista">Tata Indica Vista</option>
+                             
+                             <option value="Ford EcoSport -">Ford EcoSport -</option>
+                             
+                             <option value="Toyota Etios GD">Toyota Etios GD</option>
+                             
+                             <option value="Hyundai Xcent S">Hyundai Xcent S</option>
+                             
+                             <option value="Honda Jazz 1.2">Honda Jazz 1.2</option>
+                             
+                             <option value="Volkswagen Polo Highline">Volkswagen Polo Highline</option>
+                             
+                             <option value="Mahindra Verito Executive">Mahindra Verito Executive</option>
+                             
+                             <option value="Hyundai EON -">Hyundai EON -</option>
+                             
+                             <option value="Toyota Etios V">Toyota Etios V</option>
+                             
+                             <option value="BMW X5 xDrive30d">BMW X5 xDrive30d</option>
+                             
+                             <option value="Kia Seltos HTX">Kia Seltos HTX</option>
+                             
+                             <option value="Nissan Micra -">Nissan Micra -</option>
+                             
+                             <option value="Tata Nexon XZ">Tata Nexon XZ</option>
+                             
+                             <option value="Mahindra KUV100 K4">Mahindra KUV100 K4</option>
+                             
+                             <option value="Hyundai i20 Era">Hyundai i20 Era</option>
+                             
+                             <option value="Mahindra Jeep CL">Mahindra Jeep CL</option>
+                             
+                             <option value="Maruti Suzuki Gypsy">Maruti Suzuki Gypsy</option>
+                             
+                             <option value="Hyundai Santro ASTA">Hyundai Santro ASTA</option>
+                             
+                             <option value="Hyundai Santa Fe">Hyundai Santa Fe</option>
+                             
+                             <option value="Audi Q5 2.0">Audi Q5 2.0</option>
+                             
+                             <option value="Volvo XC60 D3">Volvo XC60 D3</option>
+                             
+                             <option value="Volkswagen Polo COMFORTLINE">Volkswagen Polo COMFORTLINE</option>
+                             
+                             <option value="Mahindra Scorpio 2.6">Mahindra Scorpio 2.6</option>
+                             
+                             <option value="Kia Sonet -">Kia Sonet -</option>
+                             
+                             <option value="Fiat Punto Emotion">Fiat Punto Emotion</option>
+                             
+                             <option value="Honda Accord 2.4">Honda Accord 2.4</option>
+                             
+                             <option value="Nissan Terrano XV">Nissan Terrano XV</option>
+                             
+                             <option value="Mahindra KUV100 K6">Mahindra KUV100 K6</option>
+                             
+                             <option value="Mahindra Marazzo M6">Mahindra Marazzo M6</option>
+                             
+                             <option value="Skoda Laura Ambition">Skoda Laura Ambition</option>
+                             
+                             <option value="Tata Harrier XZ">Tata Harrier XZ</option>
+                             
+                             <option value="Mercedes Benz E">Mercedes Benz E</option>
+                             
+                             <option value="Tata Harrier -">Tata Harrier -</option>
+                             
+                             <option value="Hyundai Fluidic Verna">Hyundai Fluidic Verna</option>
+                             
+                             <option value="Chevrolet Sail 1.2">Chevrolet Sail 1.2</option>
+                             
+                             <option value="Ford Endeavor 4X4">Ford Endeavor 4X4</option>
+                             
+                             <option value="Chevrolet Spark -">Chevrolet Spark -</option>
+                             
+                             <option value="Hyundai Santro GLS">Hyundai Santro GLS</option>
+                             
+                             <option value="Hyundai Creta 1.4">Hyundai Creta 1.4</option>
+                             
+                             <option value="Tata Indigo LX">Tata Indigo LX</option>
+                             
+                             <option value="Chevrolet Optra -">Chevrolet Optra -</option>
+                             
+                             <option value="Honda BRV -">Honda BRV -</option>
+                             
+                             <option value="Hyundai Accent -">Hyundai Accent -</option>
+                             
+                             <option value="Toyota Glanza G">Toyota Glanza G</option>
+                             
+                             <option value="Ford Figo Aspire">Ford Figo Aspire</option>
+                             
+                             <option value="Renault Lodgy -">Renault Lodgy -</option>
+                             
+                             <option value="Land Rover Range">Land Rover Range</option>
+                             
+                             <option value="Porsche Cayenne Select">Porsche Cayenne Select</option>
+                             
+                             <option value="Renault Pulse RxL">Renault Pulse RxL</option>
+                             
+                             <option value="Hyundai i10 Era">Hyundai i10 Era</option>
+                             
+                             <option value="Volkswagen Ameo Comfortline">Volkswagen Ameo Comfortline</option>
+                             
+                             <option value="Mahindra Jeep CL550">Mahindra Jeep CL550</option>
+                             
+                             <option value="Kia Carnival -">Kia Carnival -</option>
+                             
+                             <option value="Chevrolet Beat -">Chevrolet Beat -</option>
+                             
+                             <option value="Tata Nano CNG">Tata Nano CNG</option>
+                             
+                             <option value="Mahindra Xylo D2">Mahindra Xylo D2</option>
+                             
+                        </select>
+                    </div>
+                    <div class="col-md-10 form-group" style="text-align: center">
+                        <label><b>Select Year of Purchase:</b> </label><br>
+                        <select class="selectpicker form-control" id="year" name="year" required="1">
+                            
+                            <option value="2015">2015</option>
+                            
+                            <option value="2016">2016</option>
+                            
+                            <option value="2018">2018</option>
+                            
+                            <option value="2019">2019</option>
+                            
+                            <option value="2017">2017</option>
+                            
+                            <option value="2013">2013</option>
+                            
+                            <option value="2012">2012</option>
+                            
+                            <option value="2020">2020</option>
+                            
+                            <option value="2014">2014</option>
+                            
+                            <option value="2011">2011</option>
+                            
+                            <option value="2021">2021</option>
+                            
+                            <option value="2010">2010</option>
+                            
+                            <option value="2001">2001</option>
+                            
+                            <option value="2022">2022</option>
+                            
+                            <option value="2000">2000</option>
+                            
+                            <option value="2008">2008</option>
+                            
+                            <option value="2005">2005</option>
+                            
+                            <option value="2007">2007</option>
+                            
+                            <option value="2006">2006</option>
+                            
+                            <option value="2004">2004</option>
+                            
+                            <option value="2002">2002</option>
+                            
+                            <option value="2009">2009</option>
+                            
+                            <option value="2003">2003</option>
+                            
+                        </select>
+                    </div>
+                    <div class="col-md-10 form-group" style="text-align: center">
+                        <label><b>Select the Fuel Type:</b> </label><br>
+                        <select class="selectpicker form-control" id="fuel_type" name="fuel_type" required="1">
+                            
+                            <option value="Petrol">Petrol</option>
+                            
+                            <option value="Diesel">Diesel</option>
+                            
+                            <option value="Electric">Electric</option>
+                            
+                            <option value="CNG">CNG</option>
+                            
+                            <option value="LPG">LPG</option>
+                            
+                            <option value="Hybrid">Hybrid</option>
+                            
+                        </select>
+                    </div>
+                    <div class="col-md-10 form-group" style="text-align: center">
+                        <label><b>Enter the Number of Kilometres that the car has travelled:</b> </label><br>
+                        <input type="text" class="form-control" id="kilo_driven" name="kilo_driven"
+                               placeholder="Enter the kilometres driven ">
+                    </div>
+                    <div class="col-md-10 form-group" style="text-align: center">
+                        <button  class="btn btn-primary form-control" onclick="send_data()">Predict Price</button>
+                    </div>
+                </form>
+   
+              
+                <div style="width:300px;height:60px;background-color:white;margin:10px auto;font-size:25px;font-weight:bold;" id="prediction"></div>
+                
+        
+       
+        
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+<script>
+
+function form_handler(event) {
+        event.preventDefault(); // Don't submit the form normally
+    }
+    function send_data()
+    {
+        document.querySelector('form').addEventListener("submit",form_handler);
+
+        var fd=new FormData(document.querySelector('form'));
+
+        var xhr= new XMLHttpRequest({mozSystem: true});
+
+        xhr.open('POST','/predict',true);
+        document.getElementById('prediction').innerHTML="Wait! Predicting Price.....";
+        xhr.onreadystatechange = function(){
+            if(xhr.readyState == XMLHttpRequest.DONE){
+                document.getElementById('prediction').innerHTML="Prediction: ₹"+xhr.responseText;
+
+            }
+        };
+
+        xhr.onload= function(){};
+
+        xhr.send(fd);
+    }
+</script>
+
+
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+
+
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>
