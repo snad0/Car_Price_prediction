@@ -31,15 +31,16 @@ def hello_world():
 @app.route('/predict', methods=['POST'])
 def predict():
     Year=int(request.form.get('Year'))
-    Present_Price=int(request.form.get('Present_Price'))
+    Present_Price=float(request.form.get('Present_Price'))
     Kms_Driven=int(request.form.get('Kms_Driven'))
     Fuel_Type=int(request.form.get('Fuel_Type'))
     Seller_Type=int(request.form.get('Seller_Type'))
     Transmission=int(request.form.get('Transmission'))
     Owner=int(request.form.get('Owner'))
     print(Year,	Present_Price,	Kms_Driven,	Fuel_Type,	Seller_Type,	Transmission,	Owner )
-
-    return ""
+    prediction=saved_model.predict(pd.DataFrame([[Year,Present_Price,Kms_Driven,Fuel_Type,	Seller_Type,Transmission,Owner]], columns=['Year',	'Present_Price',	'Kms_Driven',	'Fuel_Type',	'Seller_Type',	'Transmission',	'Owner']))
+    print(prediction)
+    return str(prediction[0])
 
 
 if __name__ == '__main__':
